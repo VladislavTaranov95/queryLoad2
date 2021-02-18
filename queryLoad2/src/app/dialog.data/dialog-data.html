@@ -1,0 +1,34 @@
+<p mat-dialog-title>Информация:</p>
+
+<mat-dialog-content>
+    <div *ngIf="!data.group else groupTrue">
+        <table mat-table [dataSource]="data.res.result" class="mat-elevation-z8">
+
+            <ng-container matColumnDef="m_id">
+                <th mat-header-cell *matHeaderCellDef>m_id</th>
+                <td mat-cell *matCellDef="let element"> {{element.m_id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="ts">
+                <th mat-header-cell *matHeaderCellDef>ts</th>
+                <td mat-cell *matCellDef="let element"> {{element.ts}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="vlcf">
+                <th mat-header-cell *matHeaderCellDef>vlcf</th>
+                <td mat-cell *matCellDef="let element"> {{element.vlcf}} </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+    <ng-template #groupTrue>
+        <p>Консолидированное значение:</p>
+        <div *ngFor="let element of data.res.result"> {{element.vlcf}} </div>
+    </ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>

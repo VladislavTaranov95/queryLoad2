@@ -1,0 +1,8 @@
+{
+    "/queryLoadProfileMode": {
+      "target": "http://91.105.201.52:8099",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "info"
+    }
+  }

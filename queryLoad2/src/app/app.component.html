@@ -1,0 +1,68 @@
+<section class="load">
+  <div class="container">
+    <form>
+      <mat-form-field>
+        <mat-label>Введите значение</mat-label>
+        <input name="text" type="text" matInput placeholder="Укажите значение..." [(ngModel)]="textValue" (blur)="onBlurInputText()">
+        
+      </mat-form-field>
+
+      <h4>in_ch_id</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>in_ch_id</mat-label>
+        <mat-select (selectionChange)="selectedChIdValue($event)">
+          <mat-option>None</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>in_interval</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>in_interval</mat-label>
+        <mat-select (selectionChange)="selectedIntervalValue($event)">
+          <mat-option>None</mat-option>
+          <mat-option value="30">30</mat-option>
+          <mat-option value="60">60</mat-option>
+          <mat-option value="1440">1440</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <h4>in_round</h4>
+      <mat-form-field appearance="fill">
+        <mat-label>in_round</mat-label>
+        <mat-select (selectionChange)="selectedRoundValue($event)">
+          <mat-option>None</mat-option>
+          <mat-option value="1">1</mat-option>
+          <mat-option value="2">2</mat-option>
+          <mat-option value="3">3</mat-option>
+          <mat-option value="4">4</mat-option>
+          <mat-option value="5">5</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>in_ts_start</mat-label>
+          <input matInput [matDatepicker]="dp1" (dateChange)="selectedDateStart($event)" required readonly>
+          <mat-datepicker-toggle matSuffix [for]="dp1"></mat-datepicker-toggle>
+          <mat-datepicker #dp1 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </p>
+
+      <p>
+        <mat-form-field appearance="fill">
+          <mat-label>in_ts_end</mat-label>
+          <input matInput [matDatepicker]="dp2" (dateChange)="selectedDateEnd($event)" required readonly>
+          <mat-datepicker-toggle matSuffix [for]="dp2"></mat-datepicker-toggle>
+          <mat-datepicker #dp2 disabled="false"></mat-datepicker>
+        </mat-form-field>
+      </p>
+
+      <mat-radio-group [(ngModel)]="groupValue" name="radio">
+        <mat-radio-button [value]="0">False</mat-radio-button>
+        <mat-radio-button class="left" [value]="1">True</mat-radio-button>
+      </mat-radio-group>
+    </form>
+    <button mat-raised-button class="button-post" type="submit" color="primary" (click)="setDataToAPI()">Отправить</button>
+  </div>
+</section>
